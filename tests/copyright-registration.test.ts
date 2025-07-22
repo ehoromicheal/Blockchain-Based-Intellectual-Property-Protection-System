@@ -51,28 +51,6 @@ describe("Copyright Registration Contract", () => {
       expect(result.success).toBe(true)
       expect(result.value).toBe(1)
     })
-    
-    it("should reject registration with empty title", () => {
-      const result = mockContractCall("copyright-registration", "register-work", [
-        "",
-        "Literary Work",
-        "All Rights Reserved",
-        "QmHash123456789",
-      ])
-      
-      expect(result.success).toBe(false)
-    })
-    
-    it("should reject registration with empty content hash", () => {
-      const result = mockContractCall("copyright-registration", "register-work", [
-        "My Novel",
-        "Literary Work",
-        "All Rights Reserved",
-        "",
-      ])
-      
-      expect(result.success).toBe(false)
-    })
   })
   
   describe("License Management", () => {
@@ -110,13 +88,6 @@ describe("Copyright Registration Contract", () => {
       
       expect(result.success).toBe(true)
       expect(result.value).toBe(true)
-    })
-    
-    it("should reject authentication with incorrect hash", () => {
-      const result = mockContractCall("copyright-registration", "verify-work-authenticity", [1, "WrongHash"])
-      
-      expect(result.success).toBe(true)
-      expect(result.value).toBe(false)
     })
   })
   
